@@ -1,13 +1,14 @@
-import React, { useContext, useState } from 'react'
+import React, { useCallback, useContext, useState } from 'react'
 import { TodosContext } from '../context/TodosContext.jsx'
 
 const TodoForm = () => {
 
-    const {todos,setTodos,todoId,setTodoId} = useContext(TodosContext);
+    const {todos,setTodos,filter,todoId,setTodoId} = useContext(TodosContext);
 
+    const [todoInput,setTodoInput] = useState('');
 
    
-    const addTodo = (e) => {
+    const addTodo = useCallback((e) => {
         e.preventDefault();
 
         if (todoInput.trim().length === 0) {
@@ -26,9 +27,8 @@ const TodoForm = () => {
         setTodoId(preId=> preId+1);
 
         setTodoInput('');
-    }
+    },[todoInput,todos,todoId]);
 
-    const [todoInput,setTodoInput] = useState('');
 
 
     

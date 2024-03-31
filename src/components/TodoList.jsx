@@ -1,7 +1,9 @@
-import React, { useContext, useState } from 'react'
+import React, { memo, useContext, useState } from 'react'
 import { TodosContext } from '../context/TodosContext.jsx';
 
 const TodoList = () => {
+
+
 
     const {todos,setTodos,filteredTodos} = useContext(TodosContext);
 
